@@ -37,15 +37,12 @@ def main():
     warning = ""
     last_speak_time = time.time()
 
-    # Request camera permission
-    st.title("Camera Permission")
-    st.write("Please grant camera permission to proceed.")
-    st.write("When ready, click on the button below to start the application.")
-    start_button = st.button("Start Application")
+    st.title("Live Video Feed")
+    st.write("Please grant camera permission to view the live video feed.")
 
-    if start_button:
+    # Check if camera permission is granted
+    if st.button("Start Camera"):
         with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
-            st.title("Live Video Feed")
             cap = cv2.VideoCapture(0)
 
             if not cap.isOpened():
